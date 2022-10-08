@@ -1,18 +1,35 @@
-export function createMarkup(countries) {
-  return /*html*/ `<li class='country__item'>флаг псевдоэлементом перед названием<p>${name.official}</p></li><h1>${name.official}</h1>
-  <li class='country__item'><b>Capital:</b> ${capital}</li>
-    <li class='country__item'><b>Population:</b> ${population}</li>
-    <li class='country__item'><b>Languages:</b> ${languages}</li>`.join('');
+export function createInfoMarkup(countries) {
+  const markup = countries
+    .map(({ capital, name, population, languages, flags }) => {
+      return `<ul class="country-info__list">
+      <h2 class="country-list__name">${name.official}</h2>
+       
+            <li class="country-info__item"><p><b>Capital: </b>${capital}</p></li>
+            <li class="country-info__item"><p><b>Population: </b>${population}</p></li>
+            <li class="country-info__item"><p><b>Languages: </b>${Object.values(
+              languages
+            ).join(', ')}</p></li>
+        </ul>
+        `;
+    })
+    .join('');
+  return markup;
 }
 
-// export function createMarkup(countries) {
-//   return countries
-//     .map(({ capital, name, population, languages }) => {
-//       return /*html*/ `<li class='country__item'>флаг псевдоэлементом перед названием<p>${name.official}</p></li>``<h1>${name.official}</h1>
-//   <li class='country__item'><b>Capital:</b> ${capital}</li>
-//     <li class='country__item'><b>Population:</b> ${population}</li>
-//     <li class='country__item'><b>Languages:</b> ${languages}</li>
-//   `;
-//     })
-//     .join('');
-// }
+export function createMarkupList(countries) {
+  const markup = countries
+    .map(({ name, flags }) => {
+      return ` <li class="country-list__item">
+              <img class="country-list__flag" src="${flags.svg}" alt="Flag of ${name.official}" width = 30px height = 30px>
+              <h2 class="country-list__name">${name.official}</h2>
+          </li>`;
+    })
+    .join('');
+  return markup;
+}
+
+{
+  /* <img class="country-list__flag" src="${flags.svg}" alt="Flag of ${
+        name.official
+      }" width = 30px height = 30px> */
+}
