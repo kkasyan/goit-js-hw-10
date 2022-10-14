@@ -9,4 +9,4 @@ export function fetchCountries(countryValue) {
 }
 
 const BASE_URL = 'https://restcountries.com/v3.1/name/';
-const FILTERS = '?fields=flag,name,capital,population,languages';
+const FILTERS = '?fields=flags,name,capital,population,languages';
